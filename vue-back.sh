@@ -13,4 +13,4 @@ echo "stop and delete old container..."
 docker stop vue-back-container
 docker rm vue-back-container
 echo "start new container..."
-docker container run -p 3000:3000 --name vue-back-container -d vue-back
+docker container run -p 3000:3000 --name vue-back-container -d vue-back -v /usr/projects/files:/app/files
