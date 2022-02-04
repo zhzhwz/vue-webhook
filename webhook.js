@@ -23,6 +23,7 @@ const server = http.createServer(function(request, response) {
             response.end(JSON.stringify({ ok: true }));
             if (event === 'push') {
                 let payload = JSON.parse(body);
+                console.log('creating process to rebuild...');
                 let child = spawn('sh', [`./${payload.repository.name}.sh`]);
                 let buffers = [];
                 child.stdout.on('data', function(buffer) {
