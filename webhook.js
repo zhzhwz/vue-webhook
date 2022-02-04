@@ -16,12 +16,12 @@ const server = http.createServer(function(request, response) {
             let body = Buffer.concat(buffers);
             let event = request.headers['x-github-event'];
             let signature = request.headers['x-github-signature'];
+            console.log(event);
             if (signature !== sign(body)) {
                 return response.end('Not Allowed');
             }
             response.setHeader('Content-Type', 'application-json');
             response.end(JSON.stringify({ ok: true }));
-            console.log(event);
             if (event === 'push') {
                 let payload = JSON.parse(body);
                 let child = spawn('sh', [`./${payload.repository.name}.sh`]);
