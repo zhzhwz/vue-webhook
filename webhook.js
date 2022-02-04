@@ -15,7 +15,7 @@ const server = http.createServer(function(request, response) {
         request.on('end', function(buffer) {
             let body = Buffer.concat(buffers);
             let event = request.headers['x-github-event'];
-            let signature = request.headers['x-github-signature'];
+            let signature = request.headers['x-hub-signature'];
             console.log('typeof event: ' + (typeof event));
             console.log('event: ' + event);
             console.log('sign from github: ' + signature);
