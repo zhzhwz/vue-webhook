@@ -8,6 +8,7 @@ git clean -f
 echo "pulling newest codes..."
 git pull origin master
 echo "compiling..."
+export NODE_OPTIONS=--openssl-legacy-provider
 npm run build
 echo "building..."
 docker build -t vue-front .
